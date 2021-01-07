@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sst.mapper.TagMapper">
+
+	<resultMap type="com.sst.entity.Tag" id="Tag">
+		<id column="id" property="id"/>
+		<result column="tag_name"  property="tagName"/>
+	</resultMap>
+
+	<insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="com.sst.entity.Tag">
+		insert into tb_tag(
+			tag_name
+		)values(
+			#{tagName}
+		)
+	</insert>
+
+	<select id="query" resultMap="Tag">
+		select * from tb_tag
+		<include refid="TagFindCriteria"/>
+
+	</select>
+
+
+	<select id="count" resultType="int">
+		select count(1) from tb_tag
+		<include refid="TagFindCriteria"/>
+	</select>
+
+	<select id="detail" resultMap="Tag">
+		select * from tb_tag where id = #{id}
+	</select>
+
+	<delete id="delete">
+		delete from tb_tag where id = #{id}
+	</delete>
+	<update id="update">
+		update tb_tag set
+			tag_name=#{tagName}
+		where id = #{id}
+	</update>
+
+	<update id="updateSelective">
+
+		<trim prefix="set" suffixOverrides=",">
+			<if test="tagName != null and tagName != ''"> tag_name = #{tagName},</if>
+		</trim>
+		where id = #{id}
+	</update>
+
+	<sql id="TagFindCriteria">
+		<where>
+			<if test="id != null">and id = #{id}</if>
+			<if test="tagName != null and tagName != ''">and tag_name = #{tagName}</if>
+		</where>
+	</sql>
+
+</mapper>
