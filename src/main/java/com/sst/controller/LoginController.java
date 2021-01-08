@@ -18,11 +18,11 @@ public class LoginController {
 
     @PostMapping("login")
     public Result login(@RequestBody User user){
-        System.out.println(user);
+
         User queryUser = userService.login(user);
         System.out.println(queryUser);
         if (queryUser != null){
-            String token = JWTUtils.sign(user);
+            String token = JWTUtils.sign(queryUser);
             return Result.success(MapControl.getInstance().add("token",token).add("user",queryUser).getMap());
         }else {
             return Result.error("用户名或密码错误");

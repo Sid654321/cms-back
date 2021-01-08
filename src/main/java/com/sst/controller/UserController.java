@@ -15,11 +15,15 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("create")
-    public String create( User user){
+    public Result create(@RequestBody User user){
         System.out.println(user.getNickName());
         System.out.println(user.getUserName());
-        userService.create(user);
-        return "haha";
+        int flag = userService.create(user);
+        if(flag>0){
+            return Result.success();
+        }else{
+            return Result.error();
+        }
     }
     @PostMapping("query")
     public Result query (@RequestBody User user){
@@ -27,5 +31,23 @@ public class UserController {
         PageInfo<User> userPageInfo = userService.queryByPage(user);
         return Result.success(userPageInfo);
 
+    }
+    @PostMapping("delete")
+    public Result delete(Integer id){
+        int delete = userService.delete(id);
+        if (delete>0){
+            return Result.success();
+        }else{
+            return Result.error();
+        }
+    }
+    @PostMapping("update")
+    public Result update(@RequestBody User user){
+        int flag = userService.updateSelective(user);
+        if(flag>0){
+            return Result.success();
+        }else{
+            return Result.error();
+        }
     }
 }
