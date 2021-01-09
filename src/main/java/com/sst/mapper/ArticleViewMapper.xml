@@ -49,7 +49,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_article_view
 		<trim prefix="set" suffixOverrides=",">
 			<if test="articleId != null">article_id = #{articleId},</if>
 			<if test="viewDate != null and viewDate != ''"> view_date = #{viewDate},</if>

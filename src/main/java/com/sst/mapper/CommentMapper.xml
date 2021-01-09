@@ -73,7 +73,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_comment
 		<trim prefix="set" suffixOverrides=",">
 			<if test="author != null and author != ''"> author = #{author},</if>
 			<if test="email != null and email != ''"> email = #{email},</if>

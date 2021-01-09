@@ -45,7 +45,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_article_tag
 		<trim prefix="set" suffixOverrides=",">
 			<if test="articleId != null">article_id = #{articleId},</if>
 			<if test="tagId != null">tag_id = #{tagId},</if>

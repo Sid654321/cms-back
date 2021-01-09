@@ -93,7 +93,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_channel
 		<trim prefix="set" suffixOverrides=",">
 			<if test="name != null and name != ''"> name = #{name},</if>
 			<if test="parentId != null">parent_id = #{parentId},</if>

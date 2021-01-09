@@ -97,7 +97,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_article
 		<trim prefix="set" suffixOverrides=",">
 			<if test="channelId != null">channel_id = #{channelId},</if>
 			<if test="title != null and title != ''"> title = #{title},</if>

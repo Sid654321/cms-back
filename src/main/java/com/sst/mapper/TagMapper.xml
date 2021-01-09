@@ -41,7 +41,7 @@
 	</update>
 
 	<update id="updateSelective">
-
+		update tb_tag
 		<trim prefix="set" suffixOverrides=",">
 			<if test="tagName != null and tagName != ''"> tag_name = #{tagName},</if>
 		</trim>
