@@ -1,8 +1,12 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageInfo;
+import com.sst.entity.Tag;
 import com.sst.mapper.TagMapper;
 import com.sst.entity.Tag;
 import javax.annotation.Resource;
+
+import com.sst.utils.PageHelperUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -38,5 +42,11 @@ public class TagService {
 
     public int count(Tag tag) {
         return tagMapper.count(tag);
+    }
+
+    public PageInfo<Tag> queryByPage(Tag tag) {
+        PageHelperUtils.pageHelper(tag);
+        List<Tag> query = tagMapper.query(tag);
+        return new PageInfo<Tag>(query);
     }
 }

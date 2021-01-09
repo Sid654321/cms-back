@@ -1,8 +1,12 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageInfo;
+import com.sst.entity.Channel;
 import com.sst.mapper.ChannelMapper;
 import com.sst.entity.Channel;
 import javax.annotation.Resource;
+
+import com.sst.utils.PageHelperUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -38,5 +42,11 @@ public class ChannelService {
 
     public int count(Channel channel) {
         return channelMapper.count(channel);
+    }
+
+    public PageInfo<Channel> queryByPage(Channel channel) {
+        PageHelperUtils.pageHelper(channel);
+        List<Channel> query = channelMapper.query(channel);
+        return new PageInfo<Channel>(query);
     }
 }

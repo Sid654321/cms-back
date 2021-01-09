@@ -1,8 +1,12 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageInfo;
+import com.sst.entity.FriendLink;
 import com.sst.mapper.FriendLinkMapper;
 import com.sst.entity.FriendLink;
 import javax.annotation.Resource;
+
+import com.sst.utils.PageHelperUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -38,5 +42,11 @@ public class FriendLinkService {
 
     public int count(FriendLink friendLink) {
         return friendLinkMapper.count(friendLink);
+    }
+
+    public PageInfo<FriendLink> queryByPage(FriendLink friendLink) {
+        PageHelperUtils.pageHelper(friendLink);
+        List<FriendLink> query = friendLinkMapper.query(friendLink);
+        return new PageInfo<FriendLink>(query);
     }
 }

@@ -39,6 +39,7 @@ public class UserService {
     public User login(User user) {
         return userMapper.login(user);
     }
+
     public PageInfo<User> queryByPage(User user) {
         PageHelperUtils.pageHelper(user);
         List<User> query = userMapper.query(user);

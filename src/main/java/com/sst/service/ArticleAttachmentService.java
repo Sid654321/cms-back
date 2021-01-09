@@ -1,8 +1,12 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageInfo;
+import com.sst.entity.ArticleAttachment;
 import com.sst.mapper.ArticleAttachmentMapper;
 import com.sst.entity.ArticleAttachment;
 import javax.annotation.Resource;
+
+import com.sst.utils.PageHelperUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -38,5 +42,11 @@ public class ArticleAttachmentService {
 
     public int count(ArticleAttachment articleAttachment) {
         return articleAttachmentMapper.count(articleAttachment);
+    }
+
+    public PageInfo<ArticleAttachment> queryByPage(ArticleAttachment articleAttachment) {
+        PageHelperUtils.pageHelper(articleAttachment);
+        List<ArticleAttachment> query = articleAttachmentMapper.query(articleAttachment);
+        return new PageInfo<ArticleAttachment>(query);
     }
 }

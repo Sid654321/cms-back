@@ -1,8 +1,12 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageInfo;
+import com.sst.entity.Comment;
 import com.sst.mapper.CommentMapper;
 import com.sst.entity.Comment;
 import javax.annotation.Resource;
+
+import com.sst.utils.PageHelperUtils;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -38,5 +42,11 @@ public class CommentService {
 
     public int count(Comment comment) {
         return commentMapper.count(comment);
+    }
+
+    public PageInfo<Comment> queryByPage(Comment comment) {
+        PageHelperUtils.pageHelper(comment);
+        List<Comment> query = commentMapper.query(comment);
+        return new PageInfo<Comment>(query);
     }
 }
