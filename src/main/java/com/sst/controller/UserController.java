@@ -7,6 +7,8 @@ import com.sst.utils.Result;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @RequestMapping("user")
@@ -16,8 +18,7 @@ public class UserController {
 
     @RequestMapping("create")
     public Result create(@RequestBody User user){
-        System.out.println(user.getNickName());
-        System.out.println(user.getUserName());
+        user.setCreateDate(new Date());
         int flag = userService.create(user);
         if(flag>0){
             return Result.success();
@@ -45,7 +46,7 @@ public class UserController {
     public Result update(@RequestBody User user){
         int flag = userService.updateSelective(user);
         if(flag>0){
-            return Result.success();
+            return Result.success(user);
         }else{
             return Result.error();
         }

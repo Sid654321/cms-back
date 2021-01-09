@@ -1,6 +1,7 @@
 package com.sst.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sst.utils.Entity;
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class User extends Entity{
 	private String avatar;
 
 	private String email;
-	@JsonIgnore
+
 	private Date createDate;
 
 	private String status;
@@ -37,9 +38,11 @@ public class User extends Entity{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
+	@JsonProperty
 	public void setPassword(String password) {
 		this.password = password;
 	}
