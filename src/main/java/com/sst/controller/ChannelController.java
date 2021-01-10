@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping(" channel")
+@RequestMapping("channel")
 public class ChannelController {
     @Resource
     private  ChannelService  channelService;
@@ -51,5 +53,21 @@ public class ChannelController {
         }else{
             return Result.error();
         }
+    }
+
+    @PostMapping("detail")
+    public Result detail(Integer id){
+        Channel detail = channelService.detail(id);
+        if (detail != null){
+            return Result.success(detail);
+        }else{
+            return Result.error();
+        }
+    }
+
+    @PostMapping("tree")
+    public Result tree(){
+        List<Map<String, Object>> tree = channelService.tree();
+        return Result.success(tree);
     }
 }
