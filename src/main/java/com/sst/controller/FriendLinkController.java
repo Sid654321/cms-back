@@ -1,6 +1,7 @@
 package com.sst.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.sst.entity.Comment;
 import com.sst.entity.FriendLink;
 import com.sst.service.FriendLinkService;
 import com.sst.utils.Result;
@@ -48,6 +49,15 @@ public class FriendLinkController {
         int flag = friendLinkService.updateSelective(friendLink);
         if(flag>0){
             return Result.success(friendLink);
+        }else{
+            return Result.error();
+        }
+    }
+    @PostMapping("detail")
+    public Result detail(Integer id){
+        FriendLink detail = friendLinkService.detail(id);
+        if (detail != null){
+            return Result.success(detail);
         }else{
             return Result.error();
         }

@@ -2,11 +2,16 @@ package com.sst.entity;
 
 import com.sst.utils.Entity;
 import java.util.Date;
-
+import java.util.List;
+import java.util.Map;
 
 
 public class Article extends Entity{
 
+	//待审批
+	public static Integer status_0 = 0;
+	//已审批
+	public static Integer status_1 = 1;
 
 	private Integer id;
 
@@ -39,6 +44,26 @@ public class Article extends Entity{
 	private Integer createUser;
 
 	private Date updateDate;
+
+	private List<Map<String,String>> attachmentList;
+
+	private List<Integer> tagList;
+
+	public List<Map<String, String>> getAttachmentList() {
+		return attachmentList;
+	}
+
+	public void setAttachmentList(List<Map<String, String>> attachmentList) {
+		this.attachmentList = attachmentList;
+	}
+
+	public List<Integer> getTagList() {
+		return tagList;
+	}
+
+	public void setTagList(List<Integer> tagList) {
+		this.tagList = tagList;
+	}
 
 	public Integer getId() {
 		return id;

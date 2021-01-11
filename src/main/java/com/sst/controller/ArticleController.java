@@ -20,6 +20,7 @@ public class ArticleController {
 
     @RequestMapping("create")
     public Result create(@RequestBody Article article){
+        article.setStatus(Article.status_0);
         int flag = articleService.create(article);
         if(flag>0){
             return Result.success();
@@ -39,6 +40,15 @@ public class ArticleController {
         int delete = articleService.delete(id);
         if (delete>0){
             return Result.success();
+        }else{
+            return Result.error();
+        }
+    }
+    @PostMapping("detail")
+    public Result detail(Integer id){
+        Article article = articleService.detail(id);
+        if (article != null){
+            return Result.success(article);
         }else{
             return Result.error();
         }

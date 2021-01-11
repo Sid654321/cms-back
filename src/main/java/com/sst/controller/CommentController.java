@@ -1,6 +1,7 @@
 package com.sst.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.sst.entity.ArticleView;
 import com.sst.entity.Comment;
 import com.sst.service.CommentService;
 import com.sst.utils.Result;
@@ -48,6 +49,16 @@ public class CommentController {
         int flag = commentService.updateSelective(comment);
         if(flag>0){
             return Result.success(comment);
+        }else{
+            return Result.error();
+        }
+    }
+
+    @PostMapping("detail")
+    public Result detail(Integer id){
+        Comment detail = commentService.detail(id);
+        if (detail != null){
+            return Result.success(detail);
         }else{
             return Result.error();
         }

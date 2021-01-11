@@ -52,4 +52,9 @@ public class TagController {
             return Result.error();
         }
     }
+
+    @PostMapping("getAll")
+    public Result getAll(){
+        return Result.success(tagService.query(null));
+    }
 }
