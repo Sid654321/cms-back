@@ -2,13 +2,15 @@ server:
   port: 9999
   servlet:
     context-path: /cms
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cms?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: Zz19371937
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Shanghai
 
 mybatis:
   mapper-locations: com/sst/mapper/*.xml

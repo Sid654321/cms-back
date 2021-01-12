@@ -12,7 +12,7 @@
 		<result column="status"  property="status"/>
 		<result column="article_id"  property="articleId"/>
 		<result column="parent_id"  property="parentId"/>
-		<result column="Column_10"  property="column10"/>
+		<result column="Column_id"  property="columnId"/>
 	</resultMap>
 
 	<insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="com.sst.entity.Comment">
@@ -25,7 +25,7 @@
 			status,
 			article_id,
 			parent_id,
-			Column_10
+			Column_id
 		)values(
 			#{author},
 			#{email},
@@ -35,7 +35,7 @@
 			#{status},
 			#{articleId},
 			#{parentId},
-			#{column10}
+			#{columnId}
 		)
 	</insert>
 
@@ -68,7 +68,7 @@
 			status=#{status},
 			article_id=#{articleId},
 			parent_id=#{parentId},
-			Column_10=#{column10}
+			Column_id=#{columnId}
 		where id = #{id}
 	</update>
 
@@ -83,7 +83,7 @@
 			<if test="status != null">status = #{status},</if>
 			<if test="articleId != null">article_id = #{articleId},</if>
 			<if test="parentId != null">parent_id = #{parentId},</if>
-			<if test="column10 != null and column10 != ''"> Column_10 = #{column10},</if>
+			<if test="columnId != null and columnId != ''"> Column_id = #{columnId},</if>
 		</trim>
 		where id = #{id}
 	</update>
@@ -94,11 +94,11 @@
 			<if test="author != null and author != ''">and author = #{author}</if>
 			<if test="email != null and email != ''">and email = #{email}</if>
 			<if test="ip != null and ip != ''">and ip = #{ip}</if>
-			<if test="content != null and content != ''">and content = #{content}</if>
+			<if test="content != null and content != ''">and content like concat('%',#{content},'%') </if>
 			<if test="status != null">and status = #{status}</if>
 			<if test="articleId != null">and article_id = #{articleId}</if>
 			<if test="parentId != null">and parent_id = #{parentId}</if>
-			<if test="column10 != null and column10 != ''">and Column_10 = #{column10}</if>
+			<if test="columnId != null and columnId != ''">and Column_id = #{columnId}</if>
 		</where>
 	</sql>
 

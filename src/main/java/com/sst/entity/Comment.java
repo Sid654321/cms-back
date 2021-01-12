@@ -26,7 +26,7 @@ public class Comment extends Entity{
 
 	private Integer parentId;
 
-	private String column10;
+	private String columnId;
 
 	public Integer getId() {
 		return id;
@@ -82,10 +82,10 @@ public class Comment extends Entity{
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
-	public String getColumn10() {
-		return column10;
+	public String getColumnId() {
+		return columnId;
 	}
-	public void setColumn10(String column10) {
-		this.column10 = column10;
+	public void setColumnId(String columnId) {
+		this.columnId = columnId;
 	}
 }
