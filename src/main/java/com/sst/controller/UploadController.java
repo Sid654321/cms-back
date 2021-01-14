@@ -2,6 +2,7 @@ package com.sst.controller;
 
 import com.sst.utils.RequestUtils;
 import com.sst.utils.Result;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +25,13 @@ public class UploadController {
         //创建新文件名
         String newFileName = UUID.randomUUID().toString()+"."+ext;
         //保存文件
-        File file = new File("D://upload", newFileName);
-
+        //文件上传的地址
+        String path = ResourceUtils.getURL("classpath:").getPath()+"static";
+        String realPath = path.replace('/', '\\').substring(1,path.length());
+        //用于查看路径是否正确
+        File file = new File(realPath,newFileName);
         multipartFile.transferTo(file);
         //返回可访问的全路径
-        return Result.success(RequestUtils.getBasePath(request)+"upload/"+newFileName);
+        return Result.success(RequestUtils.getBasePath(request)+"static/"+newFileName);
     }
 }
