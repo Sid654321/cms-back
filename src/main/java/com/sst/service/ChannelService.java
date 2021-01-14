@@ -78,4 +78,11 @@ public class ChannelService {
 
         return mapList;
     }
+
+    public List<Channel> getChannelByPos(String pos) {
+        Channel channel = new Channel();
+        channel.setPos(pos);
+        List<Channel> query = channelMapper.query(channel);
+        return query;
+    }
 }

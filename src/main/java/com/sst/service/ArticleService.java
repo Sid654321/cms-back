@@ -1,5 +1,6 @@
 package com.sst.service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sst.entity.Article;
 import com.sst.entity.ArticleAttachment;
@@ -120,5 +121,10 @@ public class ArticleService {
         PageHelperUtils.pageHelper(article);
         List<Article> query = articleMapper.query(article);
         return new PageInfo<Article>(query);
+    }
+
+    public List<Article> top(Article article, Integer top) {
+        PageHelper.startPage(0,top);
+        return articleMapper.query(article);
     }
 }

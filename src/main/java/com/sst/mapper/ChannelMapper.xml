@@ -18,6 +18,7 @@
 		<result column="create_date"  property="createDate"/>
 		<result column="create_user"  property="createUser"/>
 		<result column="deleted_flag"  property="deletedFlag"/>
+		<result column="pos"  property="pos"/>
 	</resultMap>
 
 	<insert id="create" keyProperty="id" useGeneratedKeys="true" parameterType="com.sst.entity.Channel">
@@ -35,7 +36,8 @@
 			orderby,
 			create_date,
 			create_user,
-			deleted_flag
+			deleted_flag,
+			pos
 		)values(
 			#{name},
 			#{parentId},
@@ -50,7 +52,8 @@
 			#{orderby},
 			#{createDate},
 			#{createUser},
-			#{deletedFlag}
+			#{deletedFlag},
+			#{pos}
 		)
 	</insert>
 
@@ -88,7 +91,8 @@
 			orderby=#{orderby},
 			create_date=#{createDate},
 			create_user=#{createUser},
-			deleted_flag=#{deletedFlag}
+			deleted_flag=#{deletedFlag},
+			pos=#{pos}
 		where id = #{id}
 	</update>
 
@@ -109,6 +113,7 @@
 			<if test="createDate != null and createDate != ''"> create_date = #{createDate},</if>
 			<if test="createUser != null">create_user = #{createUser},</if>
 			<if test="deletedFlag != null and deletedFlag != ''"> deleted_flag = #{deletedFlag},</if>
+			<if test="pos != null and pos != ''"> pos = #{pos},</if>
 		</trim>
 		where id = #{id}
 	</update>
@@ -129,6 +134,7 @@
 			<if test="orderby != null">and orderby = #{orderby}</if>
 			<if test="createUser != null">and create_user = #{createUser}</if>
 			<if test="deletedFlag != null and deletedFlag != ''">and deleted_flag = #{deletedFlag}</if>
+			<if test="pos != null and pos != ''">and pos = #{pos}</if>
 		</where>
 	</sql>
 
