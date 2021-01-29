@@ -24,14 +24,21 @@ public class UploadController {
         String ext = originalFilename.substring(originalFilename.lastIndexOf(".") + 1, originalFilename.length());
         //创建新文件名
         String newFileName = UUID.randomUUID().toString()+"."+ext;
-        //保存文件
-        //文件上传的地址
-        String path = ResourceUtils.getURL("classpath:").getPath()+"static";
-        String realPath = path.replace('/', '\\').substring(1,path.length());
-        //用于查看路径是否正确
-        File file = new File(realPath,newFileName);
-        multipartFile.transferTo(file);
+
+        File targetFile = new File("//usr//local//upload//",newFileName);
+        if (!targetFile.exists()) {
+            targetFile.mkdirs();
+        }
+
+        String esxfd = null;
+        try {
+            multipartFile.transferTo(targetFile);
+        }catch (Exception e){
+            esxfd = targetFile.getPath()+"|||||"+e.getLocalizedMessage();
+        }
+
+
         //返回可访问的全路径
-        return Result.success(RequestUtils.getBasePath(request)+"static/"+newFileName);
+        return Result.success(RequestUtils.getBasePath(request)+"upload/"+newFileName);
     }
 }

@@ -3,7 +3,6 @@ package com.sst.service;
 import com.github.pagehelper.PageInfo;
 import com.sst.entity.Channel;
 import com.sst.mapper.ChannelMapper;
-import com.sst.entity.Channel;
 import javax.annotation.Resource;
 
 import com.sst.utils.PageHelperUtils;

@@ -3,7 +3,7 @@ package com.sst.service;
 import com.github.pagehelper.PageInfo;
 import com.sst.entity.ArticleAttachment;
 import com.sst.mapper.ArticleAttachmentMapper;
-import com.sst.entity.ArticleAttachment;
+
 import javax.annotation.Resource;
 
 import com.sst.utils.PageHelperUtils;

@@ -3,7 +3,6 @@ package com.sst.service;
 import com.github.pagehelper.PageInfo;
 import com.sst.entity.FriendLink;
 import com.sst.mapper.FriendLinkMapper;
-import com.sst.entity.FriendLink;
 import javax.annotation.Resource;
 
 import com.sst.utils.PageHelperUtils;

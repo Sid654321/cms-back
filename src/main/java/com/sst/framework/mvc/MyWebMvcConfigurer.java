@@ -19,12 +19,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(tokenInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login","/static/**","/upload/**","*/f/**");
+                .excludePathPatterns("/login","/static/**","/upload/**","/f/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:/upload/");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:/usr/local/upload/");
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 

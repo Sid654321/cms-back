@@ -3,7 +3,6 @@ package com.sst.service;
 import com.github.pagehelper.PageInfo;
 import com.sst.entity.Comment;
 import com.sst.mapper.CommentMapper;
-import com.sst.entity.Comment;
 import javax.annotation.Resource;
 
 import com.sst.utils.PageHelperUtils;
